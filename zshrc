@@ -7,26 +7,19 @@ antigen use oh-my-zsh
 # Bundles from the default repo declared above.
 antigen bundles <<EOBUNDLES
 
-pip
-
-# Guess what to install when running an unknown command.
 command-not-found
-
-# Helper for extracting different types of archives.
-extract
-
-# Help working with version control systems.
 svn
 git
-
-# nicoulaj's moar completion files for zsh
 zsh-users/zsh-completions src
-
-# ZSH port of Fish shell's history search feature.
 zsh-users/zsh-history-substring-search
-
-# Syntax highlighting bundle.
 zsh-users/zsh-syntax-highlighting
+rsync
+pip
+rsync
+python
+history
+tmux
+vundle
 
 EOBUNDLES
 
