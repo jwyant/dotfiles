@@ -17,6 +17,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'klen/python-mode'
 Plugin 'tomasr/molokai'
+Plugin 'rtorrent-syntax-file'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
