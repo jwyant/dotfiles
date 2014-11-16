@@ -15,7 +15,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
-#Plugin 'klen/python-mode'
 Plugin 'tomasr/molokai'
 Plugin 'rtorrent-syntax-file'
 
