@@ -35,4 +35,8 @@ filetype plugin indent on    " required
 
 syntax on
 color molokai
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
