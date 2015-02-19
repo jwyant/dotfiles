@@ -34,3 +34,6 @@ antigen apply
 # Other stuff
 autoload -U zmv
 alias mmv='noglob zmv -W'
+
+#PATH
+export PATH=$HOME/.local/bin:$PATH
