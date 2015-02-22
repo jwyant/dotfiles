@@ -35,5 +35,6 @@ antigen apply
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-#PATH
+# Environmental Variables
 export PATH=$HOME/.local/bin:$PATH
+export EDITOR=`which vim`
