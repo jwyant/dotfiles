@@ -1,5 +1,4 @@
 format = """
-$os\
 $username\
 $hostname\
 $directory\
@@ -9,7 +8,6 @@ $python\
 $nodejs\
 $rust\
 $golang\
-$cmd_duration\
 $character"""
 
 [palettes.dracula]
@@ -27,82 +25,63 @@ yellow       = "#f1fa8c"
 
 palette = "dracula"
 
-[os]
-format    = "[$symbol]($style)"
-style     = "bg:current_line fg:foreground"
-disabled  = false
-
-[os.symbols]
-Macos   = "  "
-Linux   = "  "
-Arch    = "  "
-Fedora  = "  "
-Debian  = "  "
-Ubuntu  = "  "
-Windows = "  "
-
 [username]
-format      = "[ $user]($style)"
-style_user  = "bg:current_line fg:comment"
-style_root  = "bg:current_line fg:red bold"
+format      = "[$user]($style)"
+style_user  = "bold purple"
+style_root  = "bold red"
 show_always = true
 
 [hostname]
-format    = "[@$hostname ]($style)"
-style     = "bg:current_line fg:comment"
-ssh_only  = false
-trim_at   = "."
+format   = "[@$hostname]($style) "
+style    = "bold purple"
+ssh_only = false
+trim_at  = "."
 
 [directory]
-format            = "[ $path ]($style)[$read_only]($read_only_style)"
-style             = "bg:purple fg:background bold"
-read_only         = " 󰌾"
-read_only_style   = "bg:purple fg:background"
+format            = "[ $path]($style) "
+style             = "bold cyan"
 truncation_length = 3
 truncate_to_repo  = false
+read_only         = " 󰌾"
+read_only_style   = "red"
 
 [git_branch]
-format = "[ $symbol$branch ]($style)"
-symbol = " "
-style  = "bg:green fg:background bold"
+format = "[ $branch]($style)"
+style  = "bold green"
 
 [git_status]
-format    = "[$all_status$ahead_behind]($style)"
-style     = "bg:green fg:background"
+format    = "[$all_status$ahead_behind]($style) "
+style     = "bold green"
 ahead     = "⇡${count}"
 behind    = "⇣${count}"
 diverged  = "⇕⇡${ahead_count}⇣${behind_count}"
-modified  = "✚"
-staged    = "●"
-untracked = "?"
-deleted   = "✘"
+modified  = "!${count}"
+staged    = "+${count}"
+untracked = "?${count}"
+deleted   = "✘${count}"
 
 [python]
-format = "[ $symbol$virtualenv ]($style)"
-symbol = " "
-style  = "bg:orange fg:background bold"
+format = "[ $virtualenv]($style) "
+style  = "bold yellow"
 
 [nodejs]
-format = "[ $symbol$version ]($style)"
-symbol = " "
-style  = "bg:orange fg:background bold"
+format = "[ $version]($style) "
+style  = "bold green"
 
 [rust]
-format = "[ $symbol$version ]($style)"
-symbol = " "
-style  = "bg:orange fg:background bold"
+format = "[ $version]($style) "
+style  = "bold orange"
 
 [golang]
-format = "[ $symbol$version ]($style)"
-symbol = " "
-style  = "bg:orange fg:background bold"
+format = "[ $version]($style) "
+style  = "bold cyan"
 
 [cmd_duration]
-format    = "[ 󱦟 $duration ]($style)"
-style     = "bg:current_line fg:yellow"
-min_time  = 2000
+format   = "[ $duration]($style) "
+style    = "bold yellow"
+min_time = 2000
 
 [character]
-format            = " $symbol "
-success_symbol    = "[❯](bold green)"
-error_symbol      = "[❯](bold red)"
+format         = "$symbol "
+success_symbol = "[❯](bold green)"
+error_symbol   = "[❯](bold red)"
