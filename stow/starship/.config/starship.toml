@@ -125,13 +125,13 @@ Zorin = " "
 
 [username]
 format      = "[$user]($style)"
-style_user  = "bold purple"
+style_user  = "bold cyan"
 style_root  = "bold red"
 show_always = true
 
 [hostname]
 format     = "[@$hostname]($style) "
-style      = "bold purple"
+style      = "bold red"
 ssh_only   = false
 ssh_symbol = " "
 trim_at    = "."
@@ -139,7 +139,7 @@ trim_at    = "."
 # ── Directory ─────────────────────────────────────────────────────────────────
 [directory]
 format            = "[$read_only]($read_only_style)[$path]($style) "
-style             = "bold cyan"
+style             = "bold green"
 truncation_length = 3
 truncate_to_repo  = false
 read_only         = " 󰌾"
@@ -149,11 +149,11 @@ read_only_style   = "red"
 [git_branch]
 format = "[$symbol$branch]($style)"
 symbol = " "
-style  = "bold green"
+style  = "bold pink"
 
 [git_status]
 format    = "[$all_status$ahead_behind]($style) "
-style     = "bold green"
+style     = "bold red"
 ahead     = "⇡${count}"
 behind    = "⇣${count}"
 diverged  = "⇕⇡${ahead_count}⇣${behind_count}"
