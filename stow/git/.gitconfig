@@ -20,7 +20,7 @@
     light       = false
     line-numbers = true
     side-by-side = true
-    syntax-theme = Dracula
+    syntax-theme = ansi
 
 [merge]
     conflictstyle = diff3

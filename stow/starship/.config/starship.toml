@@ -46,21 +46,6 @@ $package\
 $cmd_duration\
 $character"""
 
-[palettes.dracula]
-background   = "#282a36"
-current_line = "#44475a"
-foreground   = "#f8f8f2"
-comment      = "#6272a4"
-cyan         = "#8be9fd"
-green        = "#50fa7b"
-orange       = "#ffb86c"
-pink         = "#ff79c6"
-purple       = "#bd93f9"
-red          = "#ff5555"
-yellow       = "#f1fa8c"
-
-palette = "dracula"
-
 # ── SSH indicator ─────────────────────────────────────────────────────────────
 [env_var.SSH_CONNECTION]
 format   = "[ ]($style)"
@@ -69,7 +54,7 @@ style    = "bold yellow"
 # ── OS detection ──────────────────────────────────────────────────────────────
 [os]
 format   = "[$symbol]($style)"
-style    = "bold foreground"
+style    = "bold white"
 disabled = false
 
 [os.symbols]
@@ -149,7 +134,7 @@ read_only_style   = "red"
 [git_branch]
 format = "[$symbol$branch]($style)"
 symbol = " "
-style  = "bold pink"
+style  = "bold magenta"
 
 [git_status]
 format    = "[$all_status$ahead_behind]($style) "
@@ -184,7 +169,7 @@ style  = "bold green"
 [bun]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold foreground"
+style  = "bold white"
 
 [deno]
 format = "[$symbol$version]($style) "
@@ -194,7 +179,7 @@ style  = "bold green"
 [rust]
 format = "[$symbol$version]($style) "
 symbol = "󱘗 "
-style  = "bold orange"
+style  = "bold yellow"
 
 [golang]
 format = "[$symbol$version]($style) "
@@ -209,7 +194,7 @@ style  = "bold red"
 [kotlin]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold purple"
+style  = "bold magenta"
 
 [scala]
 format = "[$symbol$version]($style) "
@@ -229,7 +214,7 @@ style  = "bold cyan"
 [php]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold purple"
+style  = "bold magenta"
 
 [lua]
 format = "[$symbol$version]($style) "
@@ -239,7 +224,7 @@ style  = "bold cyan"
 [elixir]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold purple"
+style  = "bold magenta"
 
 [elm]
 format = "[$symbol$version]($style) "
@@ -249,17 +234,17 @@ style  = "bold cyan"
 [haskell]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold purple"
+style  = "bold magenta"
 
 [julia]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold purple"
+style  = "bold magenta"
 
 [swift]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold orange"
+style  = "bold yellow"
 
 [dart]
 format = "[$symbol$version]($style) "
@@ -269,7 +254,7 @@ style  = "bold cyan"
 [crystal]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold foreground"
+style  = "bold white"
 
 [fennel]
 format = "[$symbol$version]($style) "
@@ -279,7 +264,7 @@ style  = "bold yellow"
 [fortran]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold purple"
+style  = "bold magenta"
 
 [nim]
 format = "[$symbol$version]($style) "
@@ -289,7 +274,7 @@ style  = "bold yellow"
 [ocaml]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold orange"
+style  = "bold yellow"
 
 [rlang]
 format = "[$symbol$version]($style) "
@@ -299,7 +284,7 @@ style  = "bold cyan"
 [zig]
 format = "[$symbol$version]($style) "
 symbol = " "
-style  = "bold orange"
+style  = "bold yellow"
 
 [c]
 format = "[$symbol$version]($style) "
@@ -350,7 +335,7 @@ style  = "bold cyan"
 [package]
 format = "[$symbol$version]($style) "
 symbol = "󰏗 "
-style  = "bold orange"
+style  = "bold yellow"
 
 [memory_usage]
 symbol = "󰍛 "
