@@ -253,6 +253,17 @@ main() {
         set_default_shell
     fi
 
+    # Check for stale Ghostty config on macOS
+    if [[ "$OS" == "macos" ]]; then
+        local ghostty_appdata="$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+        if [[ -f "$ghostty_appdata" && ! -L "$ghostty_appdata" ]]; then
+            warn "Found a Ghostty config at:"
+            warn "  $ghostty_appdata"
+            warn "This may conflict with the stowed config at ~/.config/ghostty/config."
+            warn "Review and remove it if you want the stowed config to be the only one."
+        fi
+    fi
+
     echo ""
     info "Done! Manual steps remaining:"
     echo "  1. Set user.name and user.email in ~/.gitconfig"
