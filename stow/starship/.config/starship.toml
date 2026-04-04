@@ -1,4 +1,5 @@
 format = """
+${custom.ssh}\
 $os\
 $username\
 $hostname\
@@ -60,9 +61,18 @@ yellow       = "#f1fa8c"
 
 palette = "dracula"
 
+# ── SSH indicator ─────────────────────────────────────────────────────────────
+[custom.ssh]
+command   = "echo ''"
+when      = "test -n \"$SSH_CONNECTION\""
+format    = "[]($style) "
+style     = "bold yellow"
+shell     = ["bash", "--nologin"]
+disabled  = false
+
 # ── OS detection ──────────────────────────────────────────────────────────────
 [os]
-format   = "[$symbol]($style) "
+format   = "[$symbol]($style)"
 style    = "bold foreground"
 disabled = false
 
