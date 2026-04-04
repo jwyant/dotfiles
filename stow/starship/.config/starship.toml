@@ -1,13 +1,48 @@
 format = """
+$os\
 $username\
 $hostname\
 $directory\
 $git_branch\
 $git_status\
 $python\
+$conda\
 $nodejs\
+$bun\
+$deno\
 $rust\
 $golang\
+$java\
+$kotlin\
+$scala\
+$ruby\
+$perl\
+$php\
+$lua\
+$elixir\
+$elm\
+$haskell\
+$julia\
+$swift\
+$dart\
+$crystal\
+$fennel\
+$fortran\
+$nim\
+$ocaml\
+$rlang\
+$zig\
+$c\
+$cpp\
+$cmake\
+$docker_context\
+$nix_shell\
+$guix_shell\
+$buf\
+$gradle\
+$meson\
+$package\
+$cmd_duration\
 $character"""
 
 [palettes.dracula]
@@ -25,6 +60,64 @@ yellow       = "#f1fa8c"
 
 palette = "dracula"
 
+# ── OS detection ──────────────────────────────────────────────────────────────
+[os]
+format   = "[$symbol]($style) "
+style    = "bold foreground"
+disabled = false
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+AOSC = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Elementary = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Ios = "󰀷 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+Zorin = " "
+
+# ── User & host ──────────────────────────────────────────────────────────────
 [username]
 format      = "[$user]($style)"
 style_user  = "bold purple"
@@ -32,21 +125,25 @@ style_root  = "bold red"
 show_always = true
 
 [hostname]
-format   = "[@$hostname]($style) "
-style    = "bold purple"
-ssh_only = false
-trim_at  = "."
+format     = "[@$hostname]($style) "
+style      = "bold purple"
+ssh_only   = false
+ssh_symbol = " "
+trim_at    = "."
 
+# ── Directory ─────────────────────────────────────────────────────────────────
 [directory]
-format            = "[ $path]($style) "
+format            = "[$read_only]($read_only_style)[$path]($style) "
 style             = "bold cyan"
 truncation_length = 3
 truncate_to_repo  = false
 read_only         = " 󰌾"
 read_only_style   = "red"
 
+# ── Git ───────────────────────────────────────────────────────────────────────
 [git_branch]
-format = "[ $branch]($style)"
+format = "[$symbol$branch]($style)"
+symbol = " "
 style  = "bold green"
 
 [git_status]
@@ -60,24 +157,202 @@ staged    = "+${count}"
 untracked = "?${count}"
 deleted   = "✘${count}"
 
+[git_commit]
+tag_symbol = " "
+
+# ── Languages & environments ─────────────────────────────────────────────────
 [python]
-format = "[ $virtualenv]($style) "
-style  = "bold yellow"
+format        = "[$symbol$virtualenv $version]($style) "
+symbol        = " "
+style         = "bold yellow"
+
+[conda]
+format = "[$symbol$environment]($style) "
+symbol = " "
+style  = "bold green"
 
 [nodejs]
-format = "[ $version]($style) "
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold green"
+
+[bun]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold foreground"
+
+[deno]
+format = "[$symbol$version]($style) "
+symbol = " "
 style  = "bold green"
 
 [rust]
-format = "[ $version]($style) "
+format = "[$symbol$version]($style) "
+symbol = "󱘗 "
 style  = "bold orange"
 
 [golang]
-format = "[ $version]($style) "
+format = "[$symbol$version]($style) "
+symbol = " "
 style  = "bold cyan"
 
+[java]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold red"
+
+[kotlin]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold purple"
+
+[scala]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold red"
+
+[ruby]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold red"
+
+[perl]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[php]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold purple"
+
+[lua]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[elixir]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold purple"
+
+[elm]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[haskell]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold purple"
+
+[julia]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold purple"
+
+[swift]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold orange"
+
+[dart]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[crystal]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold foreground"
+
+[fennel]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold yellow"
+
+[fortran]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold purple"
+
+[nim]
+format = "[$symbol$version]($style) "
+symbol = "󰆥 "
+style  = "bold yellow"
+
+[ocaml]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold orange"
+
+[rlang]
+format = "[$symbol$version]($style) "
+symbol = "󰟔 "
+style  = "bold cyan"
+
+[zig]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold orange"
+
+[c]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[cpp]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[cmake]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold cyan"
+
+# ── Tools ─────────────────────────────────────────────────────────────────────
+[docker_context]
+format = "[$symbol$context]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[nix_shell]
+format = "[$symbol$state]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[guix_shell]
+format = "[$symbol$state]($style) "
+symbol = " "
+style  = "bold yellow"
+
+[buf]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold cyan"
+
+[gradle]
+format = "[$symbol$version]($style) "
+symbol = " "
+style  = "bold green"
+
+[meson]
+format = "[$symbol$version]($style) "
+symbol = "󰔷 "
+style  = "bold cyan"
+
+[package]
+format = "[$symbol$version]($style) "
+symbol = "󰏗 "
+style  = "bold orange"
+
+[memory_usage]
+symbol = "󰍛 "
+
+# ── Duration & prompt ─────────────────────────────────────────────────────────
 [cmd_duration]
-format   = "[ $duration]($style) "
+format   = "[$duration]($style) "
 style    = "bold yellow"
 min_time = 2000
 
