@@ -1,0 +1,29 @@
+[user]
+    name  = Your Name
+    email = you@example.com
+
+[core]
+    pager     = delta
+    autocrlf  = input
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+
+[delta]
+    navigate    = true
+    light       = false
+    line-numbers = true
+    side-by-side = true
+    syntax-theme = Dracula
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default

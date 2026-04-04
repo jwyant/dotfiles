@@ -1,0 +1,108 @@
+format = """
+$os\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$golang\
+$cmd_duration\
+$character"""
+
+[palettes.dracula]
+background   = "#282a36"
+current_line = "#44475a"
+foreground   = "#f8f8f2"
+comment      = "#6272a4"
+cyan         = "#8be9fd"
+green        = "#50fa7b"
+orange       = "#ffb86c"
+pink         = "#ff79c6"
+purple       = "#bd93f9"
+red          = "#ff5555"
+yellow       = "#f1fa8c"
+
+palette = "dracula"
+
+[os]
+format    = "[$symbol]($style)"
+style     = "bg:current_line fg:foreground"
+disabled  = false
+
+[os.symbols]
+Macos   = "  "
+Linux   = "  "
+Arch    = "  "
+Fedora  = "  "
+Debian  = "  "
+Ubuntu  = "  "
+Windows = "  "
+
+[username]
+format      = "[ $user]($style)"
+style_user  = "bg:current_line fg:comment"
+style_root  = "bg:current_line fg:red bold"
+show_always = true
+
+[hostname]
+format    = "[@$hostname ]($style)"
+style     = "bg:current_line fg:comment"
+ssh_only  = false
+trim_at   = "."
+
+[directory]
+format            = "[ $path ]($style)[$read_only]($read_only_style)"
+style             = "bg:purple fg:background bold"
+read_only         = " 󰌾"
+read_only_style   = "bg:purple fg:background"
+truncation_length = 3
+truncate_to_repo  = false
+
+[git_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+style  = "bg:green fg:background bold"
+
+[git_status]
+format    = "[$all_status$ahead_behind]($style)"
+style     = "bg:green fg:background"
+ahead     = "⇡${count}"
+behind    = "⇣${count}"
+diverged  = "⇕⇡${ahead_count}⇣${behind_count}"
+modified  = "✚"
+staged    = "●"
+untracked = "?"
+deleted   = "✘"
+
+[python]
+format = "[ $symbol$virtualenv ]($style)"
+symbol = " "
+style  = "bg:orange fg:background bold"
+
+[nodejs]
+format = "[ $symbol$version ]($style)"
+symbol = " "
+style  = "bg:orange fg:background bold"
+
+[rust]
+format = "[ $symbol$version ]($style)"
+symbol = " "
+style  = "bg:orange fg:background bold"
+
+[golang]
+format = "[ $symbol$version ]($style)"
+symbol = " "
+style  = "bg:orange fg:background bold"
+
+[cmd_duration]
+format    = "[ 󱦟 $duration ]($style)"
+style     = "bg:current_line fg:yellow"
+min_time  = 2000
+
+[character]
+format            = " $symbol "
+success_symbol    = "[❯](bold green)"
+error_symbol      = "[❯](bold red)"
