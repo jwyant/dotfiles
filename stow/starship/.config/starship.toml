@@ -141,7 +141,8 @@ OracleLinux = "[󰌷 ](fg:#c74634)"  # https://www.oracle.com/a/ocom/docs/oracle
 Pop = "[ ](fg:#48b9c7)"  # view-source:https://upload.wikimedia.org/wikipedia/commons/4/46/Pop%21_OS_Icon.svg
 Raspbian = "[ ](fg:#bc1142)"  # view-source:https://upload.wikimedia.org/wikipedia/en/c/cb/Raspberry_Pi_Logo.svg
 Redhat = "[ ](fg:#ee0000)"  # https://www.redhat.com/en/about/brand/standards/color
-RedHatEnterprise = "[ ](fg:#ee0000)"  # https://www.redhat.com/en/about/brand/standards/colorRockyLinux = "[ ](fg:foo)"
+RedHatEnterprise = "[ ](fg:#ee0000)"  # https://www.redhat.com/en/about/brand/standards/color
+RockyLinux = "[ ](fg:#10b981)"  # https://rockylinux.org/brand-guide
 Redox = "[󰀘 ](fg:#ffffff)"  # Logo is B&W https://www.redox-os.org/
 Solus = "[󰠳 ](fg:#5294e2)"  # Light blue in svg from https://getsol.us/branding/
 SUSE = "[ ](fg:#30ba78)"  # https://brand.suse.com/design-language#color
