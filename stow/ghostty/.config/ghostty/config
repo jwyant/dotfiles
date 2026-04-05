@@ -1,4 +1,3 @@
-theme = Dracula
 font-family = JetBrainsMono Nerd Font
 font-size = 14
 font-thicken = true
@@ -13,3 +12,6 @@ confirm-close-surface = false
 # macOS-specific (ignored on other platforms)
 macos-titlebar-style = tabs
 macos-option-as-alt = true
+
+# Auto Theme
+config-file = ?auto/theme.ghostty
