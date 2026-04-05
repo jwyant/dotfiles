@@ -1,352 +1,328 @@
 format = """
-${env_var.SSH_CONNECTION}\
+$jobs\
+$battery\
+$status\
 $os\
 $username\
 $hostname\
+$container\
+$shell\
 $directory\
-$git_branch\
-$git_status\
-$python\
-$conda\
-$nodejs\
-$bun\
-$deno\
-$rust\
-$golang\
-$java\
-$kotlin\
-$scala\
-$ruby\
-$perl\
-$php\
-$lua\
-$elixir\
-$elm\
-$haskell\
-$julia\
-$swift\
-$dart\
-$crystal\
-$fennel\
-$fortran\
-$nim\
-$ocaml\
-$rlang\
-$zig\
-$c\
-$cpp\
-$cmake\
-$docker_context\
-$nix_shell\
-$guix_shell\
-$buf\
-$gradle\
-$meson\
-$package\
-$cmd_duration\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
 $character"""
 
-# ── SSH indicator ─────────────────────────────────────────────────────────────
-[env_var.SSH_CONNECTION]
-format   = "[ ]($style)"
-style    = "bold yellow"
+right_format = """
+$cmd_duration\
+$vcsh\
+$fossil_branch\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$time"""
 
-# ── OS detection ──────────────────────────────────────────────────────────────
+### Left side
+
+# ── SSH indicator ─────────────────────────────────────────────────────────────
+#[env_var.SSH_CONNECTION]
+#format   = "[ ]($style)"
+#style    = "bold white"
+
+[battery]
+disabled = true
+
 [os]
-format   = "[$symbol]($style)"
-style    = "bold white"
 disabled = false
 
 [os.symbols]
-Alpaquita = " "
-Alpine = " "
-AlmaLinux = " "
-Amazon = " "
-Android = " "
-AOSC = " "
-Arch = " "
-Artix = " "
-CachyOS = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Elementary = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Ios = "󰀷 "
-Kali = " "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-Nobara = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-RockyLinux = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Void = " "
-Windows = "󰍲 "
-Zorin = " "
+Alpaquita = "[ ](fg:#85d888)"  # https://bell-sw.com/assets/images/media-kit/logo-alpaquita-labeled-black.svg
+Alpine = "[ ](fg:#0d597f)"  # view-source:https://alpinelinux.org/alpinelinux-logo.svg
+AlmaLinux = "[ ](fg:#86da2f)"  # view-source:https://upload.wikimedia.org/wikipedia/commons/1/13/AlmaLinux_Icon_Logo.svg
+Amazon = "[ ](fg:#ff9900)"  # https://www.color-hex.com/color-palette/26593
+Android = "[ ](fg:#3ddc84)"  # https://developer.android.com/distribute/marketing-tools/brand-guidelines
+Arch = "[ ](fg:#1793d1)"  # view-source:https://archlinux.org/static/logos/archlinux-logo-dark-scalable.518881f04ca9.svg
+Artix = "[ ](fg:#4cb6d8)"  # Picked from gradient in https://upload.wikimedia.org/wikipedia/commons/7/70/Artix_logo.svg
+CachyOS = "[ ](fg:#00aa88)"  # view-source:https://upload.wikimedia.org/wikipedia/commons/b/b8/CachyOS_Logo.svg
+CentOS = "[ ](fg:#a14f8c)"  # https://wiki.centos.org/ArtWork(2f)Brand(2f)Logo.html
+Debian = "[ ](fg:#a80030)"  # view-source:https://www.debian.org/logos/openlogo-nd.svg
+DragonFly = "[ ](fg:#cfff22)"  # Picked from circle in https://www.dragonflybsd.org/images/small_logo.png
+Emscripten = "[ ](fg:#c1d72f)"  # https://github.com/emscripten-core/emscripten/blob/b31dd92a4b1b7a0cbdc1b1b3f4fb22e8a0726aea/media/logo.svg?short_path=912b905#L145
+EndeavourOS = "[ ](fg:#7f3fbf)"  # https://forum.endeavouros.com/t/colour-palette/3480
+Fedora = "[ ](fg:#51a2da)"  # https://docs.fedoraproject.org/en-US/project/brand/
+FreeBSD = "[ ](fg:#eb0028)"  # https://freebsdfoundation.org/get-involved/brand-assets/
+Garuda = "[󰛓 ](fg:#2886e8)"  # Picked from gradient in https://upload.wikimedia.org/wikipedia/commons/8/88/Garuda-blue-sgs.svg
+Gentoo = "[ ](fg:#73d216)"  # https://wiki.gentoo.org/wiki/Project:Artwork/Colors
+HardenedBSD = "[󰞌 ](fg:#2fbef2)"  # Picked from text in https://hardenedbsd.org/sites/default/files/2014-08-21_logo_small_03_0_0.png
+Illumos = "[󰈸 ](fg:#ff430f)"  # view-source:https://illumos.org/docs/images/logo/PhoenixRGB.svg
+Kali = "[ ](fg:#367bf0)"  # Normally white, but this blue is all over https://www.kali.org
+Linux = "[ ](fg:#ffee11)"  # Yellow is Linus' favorite color. I picked a value.
+Mabox = "[ ](fg:#32b557)"  # Picked from https://maboxlinux.org/wp-content/uploads/2018/12/3D_logo.png
+Macos = "[ ](fg:#ffffff)"  # Apple is boring
+Manjaro = "[ ](fg:#35bfa4)"  # Picked from https://forum.manjaro.org/uploads/default/original/3X/b/5/b56dfb8180e06711af1cbbebcc74c60208b15e7f.png
+Mariner = "[ ](fg:#0078d4)"  # https://www.brandcolorcode.com/microsoft-azure
+MidnightBSD = "[ ](fg:#ffffff)"  # Logo is B&W https://www.midnightbsd.org/
+Mint = "[ ](fg:#87cf3e)"  # view-source:https://raw.githubusercontent.com/linuxmint/brand-logo/master/leaf-badge.svg
+NetBSD = "[ ](fg:#f26711)"  # https://www.netbsd.org/images/README.tnflogo
+NixOS = "[ ](fg:#7ebae4)"  # https://github.com/NixOS/nixos-artwork/blob/master/logo/README.md#colours
+Nobara = "[ ](fg:#ffffff)"  # Logo is B&W https://nobaraproject.org/
+OpenBSD = "[󰈺 ](fg:#ecdb78)"  # Picked from the fish in https://upload.wikimedia.org/wikipedia/en/thumb/8/83/OpenBSD_Logo_-_Cartoon_Puffy_with_textual_logo_below.svg/1024px-OpenBSD_Logo_-_Cartoon_Puffy_with_textual_logo_below.svg.png
+openSUSE = "[ ](fg:#73ba25)"  # https://en.opensuse.org/openSUSE:Artwork_brand
+OracleLinux = "[󰌷 ](fg:#c74634)"  # https://www.oracle.com/a/ocom/docs/oracle-brand-guidelines.pdf
+Pop = "[ ](fg:#48b9c7)"  # view-source:https://upload.wikimedia.org/wikipedia/commons/4/46/Pop%21_OS_Icon.svg
+Raspbian = "[ ](fg:#bc1142)"  # view-source:https://upload.wikimedia.org/wikipedia/en/c/cb/Raspberry_Pi_Logo.svg
+Redhat = "[ ](fg:#ee0000)"  # https://www.redhat.com/en/about/brand/standards/color
+RedHatEnterprise = "[ ](fg:#ee0000)"  # https://www.redhat.com/en/about/brand/standards/colorRockyLinux = "[ ](fg:foo)"
+Redox = "[󰀘 ](fg:#ffffff)"  # Logo is B&W https://www.redox-os.org/
+Solus = "[󰠳 ](fg:#5294e2)"  # Light blue in svg from https://getsol.us/branding/
+SUSE = "[ ](fg:#30ba78)"  # https://brand.suse.com/design-language#color
+Ubuntu = "[ ](fg:#77216f)"  # https://design.ubuntu.com/brand/colour-palette
+Unknown = "[ ](fg:#6a5f7f)"  # Asked chatgpt: what's a good color to represent "unknown" in a neutral (non-negative) way on a dark background?
+Void = "[ ](fg:#478061)"  # view-source:https://upload.wikimedia.org/wikipedia/commons/0/02/Void_Linux_logo.svg
+Windows = "[󰍲 ](fg:#0078d4)"  # https://colorswall.com/palette/181955
 
 [username]
-format      = "[$user]($style)"
-style_user  = "bold cyan"
-style_root  = "bold red"
-show_always = true
+format = "[$user]($style) "
 
 [hostname]
-format     = "[@$hostname]($style) "
-style      = "bold red"
-ssh_only   = false
-ssh_symbol = " "
-trim_at    = "."
+ssh_only = false
+ssh_symbol = " "
+format = "[$ssh_symbol](white)[$hostname]($style) "
 
 # ── Directory ─────────────────────────────────────────────────────────────────
 [directory]
 format            = "[$read_only]($read_only_style)[$path]($style) "
-style             = "bold green"
+#style             = "bold green"
 truncation_length = 3
-truncate_to_repo  = false
+truncate_to_repo  = true
+truncation_symbol = "…/"
 read_only         = " 󰌾"
 read_only_style   = "red"
+home_symbol = ""
 
-# ── Git ───────────────────────────────────────────────────────────────────────
-[git_branch]
-format = "[$symbol$branch]($style)"
-symbol = " "
-style  = "bold magenta"
+[directory.substitutions]
+"Documents" = "󰈙"
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+"Videos" = ""
+"Projects" = "󱌢"
+"School" = "󰑴"
+"code" = ""
+".config" = ""
 
-[git_status]
-format    = "[$all_status$ahead_behind]($style) "
-style     = "bold red"
-ahead     = "⇡${count}"
-behind    = "⇣${count}"
-diverged  = "⇕⇡${ahead_count}⇣${behind_count}"
-modified  = "!${count}"
-staged    = "+${count}"
-untracked = "?${count}"
-deleted   = "✘${count}"
-
-[git_commit]
-tag_symbol = " "
-
-# ── Languages & environments ─────────────────────────────────────────────────
-[python]
-format        = "[$symbol$virtualenv $version]($style) "
-symbol        = " "
-style         = "bold yellow"
-
-[conda]
-format = "[$symbol$environment]($style) "
-symbol = " "
-style  = "bold green"
-
-[nodejs]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold green"
-
-[bun]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold white"
-
-[deno]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold green"
-
-[rust]
-format = "[$symbol$version]($style) "
-symbol = "󱘗 "
-style  = "bold yellow"
-
-[golang]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[java]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold red"
-
-[kotlin]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold magenta"
-
-[scala]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold red"
-
-[ruby]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold red"
-
-[perl]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[php]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold magenta"
-
-[lua]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[elixir]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold magenta"
-
-[elm]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[haskell]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold magenta"
-
-[julia]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold magenta"
-
-[swift]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold yellow"
-
-[dart]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[crystal]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold white"
-
-[fennel]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold yellow"
-
-[fortran]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold magenta"
-
-[nim]
-format = "[$symbol$version]($style) "
-symbol = "󰆥 "
-style  = "bold yellow"
-
-[ocaml]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold yellow"
-
-[rlang]
-format = "[$symbol$version]($style) "
-symbol = "󰟔 "
-style  = "bold cyan"
-
-[zig]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold yellow"
-
-[c]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[cpp]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[cmake]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-# ── Tools ─────────────────────────────────────────────────────────────────────
-[docker_context]
-format = "[$symbol$context]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[nix_shell]
-format = "[$symbol$state]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[guix_shell]
-format = "[$symbol$state]($style) "
-symbol = " "
-style  = "bold yellow"
-
-[buf]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold cyan"
-
-[gradle]
-format = "[$symbol$version]($style) "
-symbol = " "
-style  = "bold green"
-
-[meson]
-format = "[$symbol$version]($style) "
-symbol = "󰔷 "
-style  = "bold cyan"
-
-[package]
-format = "[$symbol$version]($style) "
-symbol = "󰏗 "
-style  = "bold yellow"
-
-[memory_usage]
-symbol = "󰍛 "
+### Right side
 
 # ── Duration & prompt ─────────────────────────────────────────────────────────
 [cmd_duration]
-format   = "[$duration]($style) "
+format   = "[ $duration]($style) "
 style    = "bold yellow"
 min_time = 2000
 
-[character]
-format         = "$symbol "
-success_symbol = "[❯](bold green)"
-error_symbol   = "[❯](bold red)"
+[time]
+format = "[  $time]($style)"
+disabled = false
+
+[package]
+format = "[$symbol$version]($style)"
+
+[bun]
+format = " [$symbol]($style)"
+
+[buf]
+format = " [$symbol]($style)"
+
+[cmake]
+format = " [$symbol]($style)"
+
+[cobol]
+format = " [$symbol]($style)"
+
+[crystal]
+format = " [$symbol]($style)"
+
+[daml]
+format = " [$symbol]($style)"
+
+[dart]
+format = " [$symbol]($style)"
+
+[deno]
+format = " [$symbol]($style)"
+
+[dotnet]
+format = "[$symbol(🎯 $tfm)]($style)"
+
+[elixir]
+format = ' [$symbol]($style)'
+
+[elm]
+format = ' [$symbol]($style)'
+
+[erlang]
+format = ' [$symbol]($style)'
+
+[fennel]
+format = ' [$symbol]($style)'
+
+[gleam]
+format = ' [$symbol]($style)'
+
+[golang]
+format = ' [$symbol]($style)'
+
+[gradle]
+format = ' [$symbol]($style)'
+
+[haxe]
+format = ' [$symbol]($style)'
+
+[helm]
+format = ' [$symbol]($style)'
+
+[java]
+format = ' [$symbol]($style)'
+
+[julia]
+format = ' [$symbol]($style)'
+
+[kotlin]
+format = ' [$symbol]($style)'
+
+[lua]
+format = ' [$symbol]($style)'
+
+[meson]
+format = ' [$symbol]($style)'
+
+[nim]
+format = ' [$symbol]($style)'
+
+[nodejs]
+format = ' [$symbol]($style)'
+
+[ocaml]
+format = ' [$symbol(\($switch_indicator$switch_name\))]($style)'
+
+[opa]
+format = ' [$symbol]($style)'
+
+[perl]
+format = ' [$symbol]($style)'
+
+[php]
+format = ' [$symbol]($style)'
+
+[pulumi]
+format = ' [$symbol$stack]($style)'
+
+[purescript]
+format = ' [$symbol]($style)'
+
+[python]
+format = ' [$symbol$version]($style)'
+
+[quarto]
+format = ' [$symbol]($style)'
+
+[raku]
+format = ' [$symbol]($style)'
+
+[red]
+format = ' [$symbol]($style)'
+
+[rlang]
+format = ' [$symbol]($style)'
+
+[ruby]
+format = ' [$symbol]($style)'
+
+[rust]
+format = ' [$symbol]($style)'
+
+[solidity]
+format = ' [$symbol]($style)'
+
+[typst]
+format = ' [$symbol]($style)'
+
+[swift]
+format = ' [$symbol]($style)'
+
+[vagrant]
+format = ' [$symbol]($style)'
+
+[vlang]
+format = ' [$symbol]($style)'
+
+[zig]
+format = ' [$symbol]($style)'
