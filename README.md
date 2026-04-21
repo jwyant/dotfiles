@@ -15,8 +15,8 @@ Cross-platform dotfiles managed by [GNU Stow](https://www.gnu.org/software/stow/
 ## Install
 
 ```sh
-git clone https://github.com/yourusername/dotfiles.git ~/code/dotfiles
-cd ~/code/dotfiles
+git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ./install.sh
 ```
 
@@ -28,13 +28,20 @@ The script detects your OS, installs all packages via the native package manager
 - Log out and back in for the default shell change to take effect
 - On macOS: set Ghostty as your default terminal in System Settings
 
-## Deploying individual configs
+## Deploying configs
 
-Each stow package is independently deployable:
+Deploy everything at once:
 
 ```sh
-cd ~/code/dotfiles/stow
-stow -t ~ fish       # just fish config
-stow -t ~ starship   # just starship
-stow -t ~ tmux       # just tmux
+cd ~/dotfiles
+stow */
+```
+
+Each package is also independently deployable:
+
+```sh
+cd ~/dotfiles
+stow fish       # just fish config
+stow starship   # just starship
+stow tmux       # just tmux
 ```

@@ -2,13 +2,13 @@
 
 ## Project Summary
 
-This is a cross-platform dotfiles repository. It uses GNU Stow to symlink configs from `stow/` into `$HOME`. The `install.sh` script detects the OS, installs tools via native package managers, installs Nerd Fonts, deploys configs via stow, and sets fish as the default shell.
+This is a cross-platform dotfiles repository. It uses GNU Stow to symlink configs from the repo root into `$HOME`. The `install.sh` script detects the OS, installs tools via native package managers, installs Nerd Fonts, deploys configs via stow, and sets fish as the default shell.
 
 Read `SPEC.md` for the full specification before doing any work.
 
 ## Key Decisions — Do Not Deviate
 
-- **Stow-based**: every tool's config lives under `stow/<toolname>/` mirroring the home directory structure. No custom symlink logic.
+- **Stow-based**: every tool's config lives under `<toolname>/` at the repo root, mirroring the home directory structure. No custom symlink logic.
 - **Native package managers only**: brew (macOS), pacman (Arch/CachyOS), dnf (Fedora), apt (Debian/Ubuntu). No snap, flatpak, or cargo install. winget for Windows as a distant nice-to-have.
 - **Fish shell**: this is the only shell being configured. No bash/zsh rc files.
 - **Starship prompt**: single-line, left-aligned. SSH icon (if SSH session) → OS icon → user@host → dir → git → language → duration → prompt char. Uses ANSI color names only — no hex codes.
@@ -25,7 +25,7 @@ Read `SPEC.md` for the full specification before doing any work.
 
 - `install.sh` must be a single POSIX-compatible shell script (#!/bin/sh or #!/usr/bin/env bash). It must NOT require fish to already be installed.
 - The install script must be idempotent — safe to re-run.
-- Each stow package must be independently deployable: `stow -t ~ fish` should work without requiring starship to also be stowed.
+- Each stow package must be independently deployable: `cd ~/dotfiles && stow fish` should work without requiring starship to also be stowed.
 - Config files should have comments explaining non-obvious settings.
 - Handle Debian/Ubuntu quirks: `fd-find` binary name, `batcat` binary name. Create fish aliases or symlinks.
 - On macOS, warn if `~/Library/Application Support/com.mitchellh.ghostty/config` exists as a real file — it may conflict with the stowed config.
@@ -65,11 +65,11 @@ Read `SPEC.md` for the full specification before doing any work.
 
 1. Repository structure and README
 2. `install.sh` with OS detection + package installation + font installation + stow deployment
-3. `stow/fish/` — config.fish, aliases, greeting, path
-4. `stow/starship/` — starship.toml with ANSI colors and single-line format
-5. `stow/ghostty/` — Ghostty config with auto theme, no hardcoded palette
-6. `stow/tmux/` — tmux.conf with ANSI status bar
-7. `stow/git/` — gitconfig with delta integration + global gitignore
-8. `stow/bat/` — bat config with ansi theme
-9. `stow/fzf/` — fzf layout options + fd integration via fish conf.d
-10. `stow/direnv/` — direnv.toml
+3. `fish/` — config.fish, aliases, greeting, path
+4. `starship/` — starship.toml with ANSI colors and single-line format
+5. `ghostty/` — Ghostty config with auto theme, no hardcoded palette
+6. `tmux/` — tmux.conf with ANSI status bar
+7. `git/` — gitconfig with delta integration + global gitignore
+8. `bat/` — bat config with ansi theme
+9. `fzf/` — fzf layout options + fd integration via fish conf.d
+10. `direnv/` — direnv.toml

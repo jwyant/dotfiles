@@ -11,35 +11,34 @@ dotfiles/
 ├── install.sh              # Main bootstrap script
 ├── README.md
 ├── CLAUDE.md
-├── stow/
-│   ├── fish/
-│   │   └── .config/fish/
-│   │       ├── config.fish
-│   │       ├── conf.d/
-│   │       │   ├── aliases.fish
-│   │       │   └── path.fish
-│   │       └── functions/
-│   │           └── fish_greeting.fish
-│   ├── starship/
-│   │   └── .config/starship.toml
-│   ├── ghostty/
-│   │   └── .config/ghostty/
-│   │       └── config
-│   ├── tmux/
-│   │   └── .tmux.conf
-│   ├── git/
-│   │   ├── .gitconfig
-│   │   └── .config/git/
-│   │       └── ignore
-│   ├── bat/
-│   │   └── .config/bat/
-│   │       └── config
-│   ├── fzf/
-│   │   └── .config/fish/conf.d/
-│   │       └── fzf.fish
-│   └── direnv/
-│       └── .config/direnv/
-│           └── direnv.toml
+├── fish/
+│   └── .config/fish/
+│       ├── config.fish
+│       ├── conf.d/
+│       │   ├── aliases.fish
+│       │   └── path.fish
+│       └── functions/
+│           └── fish_greeting.fish
+├── starship/
+│   └── .config/starship.toml
+├── ghostty/
+│   └── .config/ghostty/
+│       └── config
+├── tmux/
+│   └── .tmux.conf
+├── git/
+│   ├── .gitconfig
+│   └── .config/git/
+│       └── ignore
+├── bat/
+│   └── .config/bat/
+│       └── config
+├── fzf/
+│   └── .config/fish/conf.d/
+│       └── fzf.fish
+└── direnv/
+    └── .config/direnv/
+        └── direnv.toml
 ```
 
 ## Tool Inventory
@@ -134,7 +133,7 @@ Note: `fd` is `fd-find` on Debian/Ubuntu and the binary is `fdfind`. Create a sy
 3. Install Nerd Fonts (JetBrainsMono) — download from GitHub releases to `~/.local/share/fonts` (Linux) or `~/Library/Fonts` (macOS), then `fc-cache -fv` on Linux
 4. Install all packages via native package manager
 5. Set fish as default shell (`chsh -s $(which fish)`)
-6. Run `stow` for each config directory: `cd dotfiles/stow && stow -t ~ fish starship ghostty tmux git bat fzf direnv`
+6. Run `stow` for each config directory: `cd ~/dotfiles && stow */`
 7. On macOS: warn if `~/Library/Application Support/com.mitchellh.ghostty/config` exists as a real file
 8. Print summary of what was installed and any manual steps needed
 
